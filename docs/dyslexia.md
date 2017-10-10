@@ -1,6 +1,6 @@
 ---
 layout: post
-category : Programming
+category : Programming 
 tags : [dyslexia, typoglycemia, Javascript]
 title: Dsxyliea
 ---
