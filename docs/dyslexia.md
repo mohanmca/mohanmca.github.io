@@ -56,9 +56,13 @@ $(function(){
 
 
 
-	function isLetter(char) {
+	function isEnglishLetter(char) {
 		return /^[\d]$/.test(char);
 	}
+
+	function isLetter(char) {
+		return /[\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]/.test(char);
+	}	
 
 
 	var wordsInTextNodes = [];
