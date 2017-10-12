@@ -52,9 +52,9 @@ $(function(){
 	};
 
 	// var textNodes = getTextNodesIn($("p, h1, h2, h3"));
-	var textNodes = getTextNodesIn($("*"));
-
-
+	var _textNodes = getTextNodesIn($("*"));
+	var textNodes = Array.from(_textNodes).filter(tn => tn.parentNode.tagName == "P")
+	console.log(textNodes)
 
 	function isEnglishLetter(char) {
 		return /^[\d]$/.test(char);
