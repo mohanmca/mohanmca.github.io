@@ -71,7 +71,8 @@ $(function(){
 
 		var words = []
 
-		var re = /\w+/g;
+		//var re = /\w+/g;
+		var re = /[^\x00-\x7F]+/g
 		var match;
 		while ((match = re.exec(node.nodeValue)) != null) {
 
