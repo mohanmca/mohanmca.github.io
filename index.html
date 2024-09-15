@@ -7,8 +7,43 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const input = document.getElementById('github-search');
+          const suggestionBox = document.getElementById('suggestions');
+        
+          input.addEventListener('input', function () {
+            const query = input.value;
+            if (query.length > 2) {
+              fetch(`https://api.github.com/search/repositories?q=${query}:repo:mohanmca/MohanLearningGround`)
+                .then(response => response.json())
+                .then(data => {
+                  const repos = data.items || [];
+                  suggestionBox.innerHTML = '';
+        
+                  repos.forEach(repo => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = repo.full_name;
+                    suggestionBox.appendChild(listItem);
+                  });
+                })
+                .catch(err => console.error('Error fetching GitHub data:', err));
+            } else {
+              suggestionBox.innerHTML = '';
+            }
+          });
+        });
+        </script>
+        
 </head>
 <body>
+    <input id="github-search" type="text" class="form-control" placeholder="Search GitHub"><br/>
+    <button id="search-button" class="btn btn-primary">Search</button><br/>
+    <button id="clear-button" class="btn btn-secondary">Clear</button><br/>
+    
+
+<ul id="suggestions"></ul>
+
     <a href="src/main/webapp/addition.html">Addition</a>
     <a href="src/main/webapp/addition.html">MyPagesearh</a>
 </body>
