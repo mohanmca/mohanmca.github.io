@@ -15,7 +15,7 @@
           input.addEventListener('input', function () {
             const query = input.value;
             if (query.length > 2) {
-              fetch(`https://api.github.com/search/repositories?q=${query}:repo:mohanmca/MohanLearningGround`)
+              fetch(`https://api.github.com/search/repositories?q=${query}&repo:mohanmca/MohanLearningGround`)
                 .then(response => response.json())
                 .then(data => {
                   const repos = data.items || [];
